@@ -1,0 +1,1 @@
+501,Red_Potion,Red Potion,0,50,,70,,,,,0xFFFFFFFF,63,2,,,,,,{ itemheal rand(45,65),0; },{},{}
