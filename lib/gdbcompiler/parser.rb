@@ -17,6 +17,14 @@ module Gdbcompiler
       @item_db ||= item_db_path
     end
 
+    # Items
+    def items
+      item_hashes = parse_item_db
+      item_hashes.collect do |item|
+        map_item_from_hash(item)
+      end
+    end
+
     # Parse item_db.txt
     def parse_item_db
       data = []
@@ -32,6 +40,11 @@ module Gdbcompiler
     # Item db path
     def item_db_path
       [DATABASE_PATH, @version, ITEM_DB_FILENAME].join('/')
+    end
+
+    # Map item hash to item instance
+    def map_item_from_hash(item)
+      Item.new(item)
     end
 
     # Read item file and filter comment

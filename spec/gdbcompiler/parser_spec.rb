@@ -155,5 +155,102 @@ RSpec.describe Gdbcompiler::Parser do
         expect(@result[:on_unequip_script]).to eq('{}')
       end
     end
+
+    context 'map_item_from_hash' do
+      before(:all) do
+        @mock_item_line = File.read('spec/db_data/item_db_02.txt')
+        @parser = Gdbcompiler::Parser.new
+        @result_hash = @parser.send(:parse_item_line, @mock_item_line)
+        @item = @parser.send(:map_item_from_hash, @result_hash)
+      end
+
+      it 'id' do
+        expect(@item.id).to eq(501)
+      end
+
+      it 'aegis_name' do
+        expect(@item.aegis_name).to eq('Red_Potion')
+      end
+
+      it 'name' do
+        expect(@item.name).to eq('Red Potion')
+      end
+
+      it 'type' do
+        expect(@item.type).to eq(0)
+      end
+
+      it 'buy' do
+        expect(@item.buy).to eq(50)
+      end
+
+      it 'sell' do
+        expect(@item.sell).to be_nil
+      end
+
+      it 'weight' do
+        expect(@item.weight).to eq(70)
+      end
+
+      it 'attack' do
+        expect(@item.attack).to be_nil
+      end
+
+      it 'def' do
+        expect(@item.def).to be_nil
+      end
+
+      it 'range' do
+        expect(@item.range).to be_nil
+      end
+
+      it 'slot' do
+        expect(@item.slot).to be_nil
+      end
+
+      it 'job' do
+        expect(@item.job).to eq('0xFFFFFFFF')
+      end
+
+      it 'class' do
+        expect(@item.class).to eq(63)
+      end
+
+      it 'gender' do
+        expect(@item.gender).to eq(2)
+      end
+
+      it 'loc' do
+        expect(@item.loc).to be_nil
+      end
+
+      it 'wlv' do
+        expect(@item.wlv).to be_nil
+      end
+
+      it 'elv' do
+        expect(@item.elv).to be_nil
+      end
+
+      it 'refineable' do
+        expect(@item.refineable).to be_nil
+      end
+
+      it 'view' do
+        expect(@item.view).to be_nil
+      end
+
+      it 'script' do
+        expect(@item.script).to eq('{ itemheal rand(45,65),0; }')
+      end
+
+      it 'on_equip_script' do
+        expect(@item.on_equip_script).to eq('{}')
+      end
+
+      it 'on_unequip_script' do
+        expect(@item.on_unequip_script).to eq('{}')
+      end
+    end
   end
 end
