@@ -1,6 +1,9 @@
 require 'gdbcompiler/version'
 
 require_relative 'gdbcompiler/item'
+require_relative 'gdbcompiler/script'
+require_relative 'gdbcompiler/effect'
+require_relative 'gdbcompiler/condition'
 require_relative 'gdbcompiler/parser'
 require_relative 'gdbcompiler/gdb_error'
 

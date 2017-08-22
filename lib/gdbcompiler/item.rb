@@ -31,6 +31,9 @@ module Gdbcompiler
         instance_variable_set("@#{key}", value)
       end
       yield(self) if block_given?
+      @script = Script.new(raw: @script)
+      @on_equip_script = Script.new(raw: @on_equip_script)
+      @on_unequip_script = Script.new(raw: @on_unequip_script)
     end
   end
 end

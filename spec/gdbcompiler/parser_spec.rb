@@ -241,15 +241,15 @@ RSpec.describe Gdbcompiler::Parser do
       end
 
       it 'script' do
-        expect(@item.script).to eq('{ itemheal rand(45,65),0; }')
+        expect(@item.script.raw).to eq('{ itemheal rand(45,65),0; }')
       end
 
       it 'on_equip_script' do
-        expect(@item.on_equip_script).to eq('{}')
+        expect(@item.on_equip_script.raw).to eq('{}')
       end
 
       it 'on_unequip_script' do
-        expect(@item.on_unequip_script).to eq('{}')
+        expect(@item.on_unequip_script.raw).to eq('{}')
       end
     end
   end
