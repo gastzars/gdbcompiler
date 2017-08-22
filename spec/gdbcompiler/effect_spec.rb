@@ -19,6 +19,14 @@ RSpec.describe Gdbcompiler::Effect do
       it 'has 2 variables' do
         expect(@effect.variables.count).to eq(2)
       end
+
+      it 'first variables is rand(45,65)' do
+        expect(@effect.variables[0]).to eq('rand(45,65)')
+      end
+
+      it 'second variables is 0' do
+        expect(@effect.variables[1]).to eq('0')
+      end
     end
   end
 end

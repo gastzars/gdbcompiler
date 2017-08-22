@@ -27,7 +27,22 @@ module Gdbcompiler
     def map_raw_to_variables
       splitted = @raw.split(' ')
       temp = splitted[1..splitted.count].join(' ')
-      vars = temp.split(',')
+      index = 0
+      found = false
+      vars = temp.chars.collect do |u|
+        if (u == '{' || u == '(') && index != -1
+          found = true
+          index += 1
+          u
+        elsif (u == '}' || u == ')') && index != -1
+          index -= 1
+          u
+        elsif (u != '{' || u != '(') && index.zero?
+          u == ',' ? 'parse_item_script' : u
+        else
+          u
+        end
+      end.join.split('parse_item_script')
       vars.each do |var|
         @variables << var
       end
