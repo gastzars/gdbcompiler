@@ -18,6 +18,11 @@ module Gdbcompiler
       map_raw_to_variables
     end
 
+    # Translate to thai
+    def translate
+      send(@type, *@variables)
+    end
+
     private
 
     def map_raw_to_type
@@ -26,6 +31,7 @@ module Gdbcompiler
 
     def map_raw_to_variables
       splitted = @raw.split(' ')
+      return false if splitted.count.zero?
       temp = splitted[1..splitted.count].join(' ')
       index = 0
       found = false
@@ -46,6 +52,19 @@ module Gdbcompiler
       vars.each do |var|
         @variables << var
       end
+    end
+
+    # RATHENA SCRIPT
+
+    def itemheal(hp, sp)
+      text = []
+      text << TRANSLATE['itemheal']['hp'].gsub('%1', eval(hp).to_s) if hp != '0'
+      text << TRANSLATE['itemheal']['sp'].gsub('%1', eval(sp).to_s) if sp != '0'
+      text.join("\n")
+    end
+
+    def rand(min, max)
+      "#{min} ~ #{max}"
     end
   end
 end

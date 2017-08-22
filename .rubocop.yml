@@ -8,4 +8,7 @@ Metrics/MethodLength:
   Max: 400
 Metrics/PerceivedComplexity:
   Max: 400
-
+Metrics/LineLength:
+  Max: 120
+Security/Eval:
+  Enabled: false

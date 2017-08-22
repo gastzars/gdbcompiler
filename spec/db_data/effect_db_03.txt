@@ -1,0 +1,1 @@
+itemheal rand(45,65),rand(10,15)

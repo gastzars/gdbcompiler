@@ -1,4 +1,5 @@
 require 'gdbcompiler/version'
+require 'yaml'
 
 require_relative 'gdbcompiler/item'
 require_relative 'gdbcompiler/script'
@@ -9,5 +10,5 @@ require_relative 'gdbcompiler/gdb_error'
 
 # Gdbcompiler self lib for export rAthena database to text
 module Gdbcompiler
-  # Your code goes here...
+  TRANSLATE = YAML.load_file(File.dirname(__FILE__) + '/data/translate.yml').freeze
 end

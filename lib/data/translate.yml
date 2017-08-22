@@ -1,3 +1,6 @@
+itemheal:
+  hp: 'ฟื้นฟู HP ^000088%1^000000'
+  sp: 'ฟื้นฟู SP ^000088%1^000000'
 bonus:
   bAbsorbDmgMaxHP: '' 
   bAddClass: '' 
