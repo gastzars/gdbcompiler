@@ -1,11 +1,12 @@
 module Gdbcompiler
   # Parser class for parsing text to instances
   class Parser
-    attr_accessor(:version, :item_db)
+    attr_accessor(:version, :item_db, :mob_db)
     RENEWAL_PATH = 're'.freeze
     PRE_RENEWAL_PATH = 'pre-re'.freeze
     DATABASE_PATH = 'db'.freeze
     ITEM_DB_FILENAME = 'item_db.txt'.freeze
+    MOB_DB_FILENAME = 'mob_db.txt'.freeze
 
     # When create an instance can be create with hash
     def initialize(options = {})
@@ -15,6 +16,7 @@ module Gdbcompiler
       yield(self) if block_given?
       @version ||= RENEWAL_PATH
       @item_db ||= item_db_path
+      @mob_db ||= mob_db_path
     end
 
     # Items
@@ -42,6 +44,11 @@ module Gdbcompiler
       [DATABASE_PATH, @version, ITEM_DB_FILENAME].join('/')
     end
 
+    # Mob db path
+    def mob_db_path
+      [DATABASE_PATH, @version, MOB_DB_FILENAME].join('/')
+    end
+
     # Map item hash to item instance
     def map_item_from_hash(item)
       Item.new(item)
@@ -49,8 +56,18 @@ module Gdbcompiler
 
     # Read item file and filter comment
     def read_item_db_file
-      raise GdbError, 'item_db not found' unless File.exist?(@item_db)
-      item_data = File.read(@item_db).split("\n")
+      read_file(@item_db)
+    end
+
+    # Read mob file and filter comment
+    def read_mob_db_file
+      read_file(@mob_db)
+    end
+
+    # Read rAthena file
+    def read_file(file)
+      raise GdbError, "#{file} not found" unless File.exist?(file)
+      item_data = File.read(file).split("\n")
       item_data.reject! do |line_item|
         line_item.start_with?('//')
       end

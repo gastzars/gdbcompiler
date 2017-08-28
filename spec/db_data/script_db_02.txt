@@ -1,0 +1,1 @@
+{ itemheal rand(45,65),0; itemheal 0,10; }

@@ -1,0 +1,1 @@
+sc_start SC_FREEZE,10000,0,2500,0

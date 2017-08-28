@@ -1,6 +1,60 @@
 itemheal:
-  hp: 'ฟื้นฟู HP ^000088%1^000000'
-  sp: 'ฟื้นฟู SP ^000088%1^000000'
+  hp: 'ฟื้นฟู : HP ^000088%1^000000'
+  sp: 'ฟื้นฟู : SP ^000088%1^000000'
+percentheal:
+  hp: 'ฟื้นฟู : HP ^000088%1^000000 %'
+  sp: 'ฟื้นฟู : SP ^000088%1^000000 %'
+produce:
+  0: 'สร้าง : ใช้สำหรับสร้าง %1'
+  item_type:
+    '1': 'อาวุธเลเวล 1'
+    '2': 'อาวุธเลเวล 2'
+    '3': 'อาวุธเลเวล 3'
+    '21': 'เหล็กและหินสำหรับ Blacksmith'
+    '22': 'ยาสำหรับ Alchemist, Holy Water, และพิษสำหรับ Assasin'
+    '23': 'ใบธาตุ'
+sc_end: 'รักษา : ^006600%1^000000'
+itemskill: 
+  0: 'ผล : ใช้สกิล ^006600%1^000000 Lv. %2'
+  skills:
+    AL_TELEPORT: 'Teleport'
+    SM_ENDURE: 'Endure'
+    SM_SELFPROVOKE: 'Self Provoke'
+    ALL_RESURRECTION: 'Resurrection'
+    MC_IDENTIFY: 'Identify'
+getrandgroupitem:
+  0: 'ผล : สุ่ม Item %1 ชิ้น จาก ^006600%2^000000'
+  groupitem:
+    IG_BlueBox: 'Old Blue Box'
+    IG_CardAlbum: 'Old Card Album'
+    IG_VioletBox: 'Old Violet Box'
+monster:
+  0: 'ผล : สุ่มเสก Monster %1'
+  types:
+    -1-MOBG_Branch_Of_Dead_Tree: 'ระดับ ธรรมดา'
+sc_start:
+  0: 'ผล : ^006600%1^000000'
+  1: 'ผล : ^006600%1^000000 ใส่ตัวเอง เป็นเวลา ^006600%2^000000'
+  2: 'ผล : มีโอกาส ^006600%3^000000 % ที่จะ ^006600%1^000000 ใส่ตัวเอง เป็นเวลา ^006600%2^000000'
+  values:
+    percent: '%1 %'
+    level: 'เลเวล %1'
+    default: '%1'
+  effect:
+    SC_FREEZE: 'แช่แข็ง'
+    SC_STUN: 'มึนงง'
+    SC_BLIND: 'ตาบอด'
+time:
+  second: 'วินาที'
+  minute: 'นาที'
+  hour: 'ชั่วโมง'
+  day: 'วัน'
+status:
+  SC_POISON: 'พิษ'
+  SC_SILENCE: 'ใบ้'
+  SC_BLIND: 'ตาบอด'
+  SC_CONFUSION: 'สับสน'
+  SC_HALLUCINATION: 'ภาพหลอน'
 bonus:
   bAbsorbDmgMaxHP: '' 
   bAddClass: '' 

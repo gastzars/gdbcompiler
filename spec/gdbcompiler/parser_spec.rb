@@ -44,6 +44,29 @@ RSpec.describe Gdbcompiler::Parser do
       parser = Gdbcompiler::Parser.new(item_db: 'gas.txt')
       expect(parser.item_db).to eq('gas.txt')
     end
+
+    it 'Mob db path combination when default' do
+      parser = Gdbcompiler::Parser.new
+      mob_path = parser.send(:mob_db_path)
+      expect(mob_path).to eq('db/re/mob_db.txt')
+    end
+
+    it 'Mob db path combination when re' do
+      parser = Gdbcompiler::Parser.new(version: 're')
+      mob_path = parser.send(:mob_db_path)
+      expect(mob_path).to eq('db/re/mob_db.txt')
+    end
+
+    it 'Mob db path combination when pre-re' do
+      parser = Gdbcompiler::Parser.new(version: 'pre-re')
+      mob_path = parser.send(:mob_db_path)
+      expect(mob_path).to eq('db/pre-re/mob_db.txt')
+    end
+
+    it 'Mob db path could be specify' do
+      parser = Gdbcompiler::Parser.new(mob_db: 'gas.txt')
+      expect(parser.mob_db).to eq('gas.txt')
+    end
   end
 
   context 'Parsing item_db' do
@@ -251,6 +274,14 @@ RSpec.describe Gdbcompiler::Parser do
       it 'on_unequip_script' do
         expect(@item.on_unequip_script.raw).to eq('{}')
       end
+    end
+  end
+
+  context 'Parsing mob_db' do
+    it 'Select mob data without comment' do
+      parser = Gdbcompiler::Parser.new(mob_db: 'spec/db_data/mob_db_01.txt')
+      item_data = parser.send(:read_mob_db_file)
+      expect(item_data.count).to eq(1)
     end
   end
 end

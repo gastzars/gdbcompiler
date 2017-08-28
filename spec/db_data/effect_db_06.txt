@@ -1,0 +1,1 @@
+itemskill "AL_TELEPORT",1
